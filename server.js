@@ -8,8 +8,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const TELEGRAM_BOT_TOKEN = "7660929559:AAG6bFphLHunGZEdU2xFNAFz5CpccHKfuW0"; 
-const TELEGRAM_CHAT_ID = "-4715764212"; 
+const TELEGRAM_BOT_TOKEN = "BOT TOKE HERE"; 
+const TELEGRAM_CHAT_ID = "CHAT ID HERE"; 
 
 // Serve o arquivo index.html na rota "/"
 app.get("/", (req, res) => {
